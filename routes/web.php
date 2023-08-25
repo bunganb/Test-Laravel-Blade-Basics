@@ -14,8 +14,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::view('/', 'dashboard')->name('dashboard');
 
+Route::view('/', 'dashboard')->name('dashboard');
 Route::get('/users', [HomeController::class, 'users'])->name('users');
 Route::get('/alert', [HomeController::class, 'alert'])->name('alert');
 Route::get('/table', [HomeController::class, 'table'])->name('table');
@@ -24,4 +24,5 @@ Route::view('/authenticated', 'authenticated')->name('authenticated');
 Route::get('/include', [HomeController::class, 'include'])->name('include');
 Route::view('/layout', 'layout')->name('layout');
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
