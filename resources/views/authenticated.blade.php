@@ -1,24 +1,22 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Authenticated?') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="border-b border-gray-200 bg-white p-6">
-                    @if (Auth::check())
-                        @php
-                            $user = Auth::user();
-                        @endphp
-                    Yes, I am logged in as {{ $user->name }}.
-                    @else
-                    No, I am not logged in.
-                    @endif
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     {{-- Task: add a condition to show correct text --}}
                     {{-- If user is logged in, show their email --}}
+                    @auth
+                    Yes, I am logged in as {{ Auth::user()->email }}
+                    @endauth
+                    @guest
+                    No, I am not logged in.
+                    @endguest
                 </div>
             </div>
         </div>
